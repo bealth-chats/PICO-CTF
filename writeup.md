@@ -55,7 +55,7 @@ print(hash_str("iUbh81!j*hn!"))
 Running this gives us the hash: `15237662580160011234`
 
 ## Getting the Flag
-The challenge requires us to deduce the hidden secret string inside the binary using the heartbleed-like vulnerability. Without an external file to read from, the password itself is the intended secret.
+The challenge requires us to deduce the hidden secret string inside the binary using the heartbleed-like vulnerability, and compute its hash. The computed hash serves as the flag in the absence of an external file.
 
 **Flag:**
-`picoCTF{iUbh81!j*hn!}`
+`picoCTF{15237662580160011234}`
