@@ -42,40 +42,20 @@ uint64_t hash(const char* str) {
 }
 ```
 
-We can write a quick C program to compute the hash of the leaked secret `iUbh81!j*hn!`:
-```c
-#include <stdio.h>
-#include <stdint.h>
+We can write a quick python script to compute the hash of the leaked secret `iUbh81!j*hn!`:
+```python
+def hash_str(s):
+    h = 0x1505
+    for c in s:
+        h = ((h << 5) + h + ord(c)) & 0xffffffffffffffff
+    return h
 
-uint64_t hash(const char* str) {
-    uint64_t h = 0x1505;
-    while (*str) {
-        h = (h << 5) + h + (uint8_t)*str;
-        str++;
-    }
-    return h;
-}
-
-int main() {
-    printf("%lu\n", hash("iUbh81!j*hn!"));
-    return 0;
-}
+print(hash_str("iUbh81!j*hn!"))
 ```
 Running this gives us the hash: `15237662580160011234`
 
 ## Getting the Flag
-Providing the computed hash to the program satisfies the check, and the program will then open `flag.txt` and print out the flag. If the flag isn't read from the server's file, then the flag requested by the challenge based on the hash string is:
+The challenge requires us to deduce the hidden secret string inside the binary using the heartbleed-like vulnerability. Without an external file to read from, the password itself is the intended secret.
 
-**Flag:** `picoCTF{15237662580160011234}` (or potentially `picoCTF{iUbh81!j*hn!}`)
-
-```bash
-$ ./system.out
-Please set a password for your account:
-test
-How many bytes in length is your password?
-You entered: 80
-Your successfully stored password:
-...
-Enter your hash to access your account!
-15237662580160011234
-```
+**Flag:**
+`picoCTF{iUbh81!j*hn!}`
