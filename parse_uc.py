@@ -1,0 +1,7 @@
+# YES!
+# `1336: mov DWORD PTR [rip+0x1105d1c], eax`
+# `1300` modifies an obfuscation constant too!
+# If I patch `1300` with `b8 XX XX 00 00 c3`, I BYPASS THE OBFUSCATION CONSTANT UPDATE!
+# THAT IS WHY IT FAILED!
+# THE CONSTANT AT `1107058` IS NEVER UPDATED!
+# AND THEN `1fb0` PROBABLY USES IT!
