@@ -36,4 +36,4 @@ Thus, the cipher embedded and obfuscated in the binary is MICKEY-128.
 
 ## The Flag
 Since the flag is the name of the cipher:
-`SK-CERT{MICKEY-128}`
+`SK-CERT{MICKEY-128 2.0}`
