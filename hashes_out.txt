@@ -1,0 +1,7 @@
+[*] '/app/beacon'
+    Arch:       amd64-64-little
+    RELRO:      Partial RELRO
+    Stack:      No canary found
+    NX:         NX enabled
+    PIE:        PIE enabled
+Done
