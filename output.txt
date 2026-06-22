@@ -1,0 +1,8 @@
+[*] '/app/beacon'
+    Arch:       amd64-64-little
+    RELRO:      Partial RELRO
+    Stack:      No canary found
+    NX:         NX enabled
+    PIE:        PIE enabled
+Brute forcing ALL hashes to find the closest to 0xbf71f73f!
+Trying seed: 0x0Trying seed: 0x1000
